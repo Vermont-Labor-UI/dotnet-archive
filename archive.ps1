@@ -5,7 +5,7 @@ if ($build.deploys)
   $compressionLevel = [System.IO.Compression.CompressionLevel]::Optimal
   $build.deploys | ForEach {
     $directory = $Build.ArtifactStagingDirectory + "/" + $_.name;
-    $output = $Build.BinariesDirectory + "/" + $_.name + ".zip"
+    $output = $Build.ArtifactStagingDirectory + "/artifacts/" + $_.name + ".zip"
     [System.IO.Compression.ZipFile]::CreateFromDirectory($directory, $output, $compressionLevel, $false)
     Write-Host "Created Zip $output"
   }
